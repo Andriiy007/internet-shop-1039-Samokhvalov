@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif, Helvetica, sans-serif;
+}
+
+:root {
+    --font-h: 'Open Sans', sans-serif;
+    --font-p: 'Rubik', sans-serif;
+  }
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+p,
+a {
+  font-family: var(--font-p);
+  font-size: 1rem;
+  font-weight: lighter;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-h);
+  font-weight: lighter;
+}
