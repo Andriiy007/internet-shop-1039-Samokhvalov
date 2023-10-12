@@ -8,6 +8,9 @@
 :root {
     --font-h: 'Open Sans', sans-serif;
     --font-p: 'Rubik', sans-serif;
+    --font-color: rgb(255,255,255);
+    --button--header-bg-color: rgba(24, 55, 111, 1);
+    --button-background-color: rgba(51, 122, 183, 1);
   }
 
 .container {

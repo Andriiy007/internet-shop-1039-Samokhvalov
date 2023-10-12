@@ -1,0 +1,36 @@
+.Header__background {
+   background-color: black;
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    color: var(--font-color);
+    position: relative;
+    display: flex;
+    padding: 25px;
+    background-image: url(/UA-1039-Samokhvalov/img/vw-background.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.header__nav-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header__nav-list-li {
+    background-color: inherit;
+    padding: 4px;
+    margin: 5px;
+    border: 1px solid whitesmoke;
+    border-radius: 25px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.header__btn {
+    text-decoration: none;
+    color: var(--font-color);
+}

@@ -10,32 +10,11 @@
 </head>
 
 <body>
-    <header class="container">
-        <nav class="header__nav">
-            <ul class="header__nav-list">
-                <ol class="header__nav-list-li">About us</ol>
-                <ol class="header__nav-list-li">Contacts</ol>
-                <ol class="header__nav-list-li">Testemonials</ol>
-            </ul>
-        </nav>
-        <nav class="header__acc">
-            <ul class="header__acc-list">
-                <ol class="header__acc-list-li">Sign in</ol>
-                <ol class="header__acc-list-li">Create account</ol>
-                <ol class="header__acc-list-li">For moderators</ol>
-            </ul>
-        </nav>
+    <header data-include="partials/header.partial.html">
     </header>
-    <main class="catalogue container">
-        <h1 class="catalogue__title">Volkswagen spare parts</h1>
-        <div class="catalogue__search">
-            <form class="catalogue__search-box searchbox">
-                <input class="searchbox__txt" type="text" name="searchbox" placeholder="enter part number">
-                <button class="searchbox__btn" type="submit">search</button>
-            </form>
-        </div>
-    </main>
+    <section data-include="partials/catalogue.partial.html"></section>
     <footer></footer>
+    <script src="https://unpkg.com/html-data-include@3.3.3/html-data-include.js"></script>
     <script src="js/index.js"></script>
 </body>
 
