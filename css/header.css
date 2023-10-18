@@ -9,7 +9,7 @@
     position: relative;
     display: flex;
     padding: 25px;
-    background-image: url(/UA-1039-Samokhvalov/img/vw-background.jpg);
+    background-image: url(/img/vw-background.jpg);
     background-size: cover;
     background-position: center;
 }
