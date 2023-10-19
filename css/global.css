@@ -1,21 +1,28 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif, Helvetica, sans-serif;
 }
 
 :root {
-    --font-h: 'Open Sans', sans-serif;
-    --font-p: 'Rubik', sans-serif;
-    --font-color: rgb(255,255,255);
-    --button--header-bg-color: rgba(24, 55, 111, 1);
-    --button-background-color: rgba(51, 122, 183, 1);
-  }
+  --font-h: 'Open Sans', sans-serif;
+  --font-p: 'Rubik', sans-serif;
+  --font-color: rgb(255, 255, 255);
+  --button--header-bg-color: rgba(24, 55, 111, 1);
+  --button-background-color: rgba(51, 122, 183, 1);
+}
 
 .container {
-    max-width: 1200px;
-    margin: auto;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateX(100%);
+  --delay: .1s;
+  transition: .5s ease-in-out var(--delay);
 }
 
 p,
@@ -33,4 +40,31 @@ h5,
 h6 {
   font-family: var(--font-h);
   font-weight: lighter;
+}
+
+table {
+  width: 100%;
+}
+
+table,
+th,
+td {
+  border-collapse: collapse;
+  padding: 1rem;
+  text-align: left;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #d5d1defe;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #0000000b;
+}
+
+tbody tr:hover {
+  background-color: #fff6;
 }

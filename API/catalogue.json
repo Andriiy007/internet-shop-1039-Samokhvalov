@@ -1,50 +1,11 @@
 [
     {
-       "name": "Oil filter",
-       "id": 1,
-       "category": "engine",
-       "price": 5,
-       "currency": "USD",
-       "fits": "Volkswagen"
-    },
-    {
-        "name": "Cooler pump",
-        "id": 2,
         "category": "engine",
-        "price": 25,
-        "currency": "USD",
-        "fits": "Volkswagen"
-    },
-    {
-        "name": "hood",
-        "id": 3,
-        "category": "body",
-        "price": 300,
-        "currency": "USD",
-        "fits": "Volkswagen"
-    },
-    {
-        "name": "headlight led",
-        "id": 4,
-        "category": "electrical",
-        "price": 700,
-        "currency": "USD",
-        "fits": "Volkswagen"
-    },
-    {
-        "name": "Disc Brake Rotor",
-        "id": 5,
-        "category": "brake",
-        "price": 95,
-        "currency": "USD",
-        "fits": "Volkswagen"
-    },
-    {
-        "name": "Disc Brake Caliper",
-        "id": 6,
-        "category": "brake",
-        "price": 217,
-        "currency": "USD",
-        "fits": "Volkswagen"
+        "id": 1,
+        "name": "Oil filter",
+        "fits": "Volkswagen",
+        "aviability": true,
+        "price": 5,
+        "currency": "USD"
     }
 ]

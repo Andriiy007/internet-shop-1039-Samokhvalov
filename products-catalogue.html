@@ -1,17 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <title>Catalogue</title>
 </head>
+
 <body>
     <header data-include="/partials/header.partial.html"></header>
-    <main>
-        <div class="catalogue"></div>
+    <main class="products-catalogue">
+        <div class="products-catalogue-table">
+            <div class="products-catalogue-header">
+                <h1>Products catalogue</h1>
+                <div class="products-catalogue__search">
+                    <input class="products-catalogue__search-input" type="search"
+                        placeholder="search by ID/category/name">
+                    <img src="img/search-button.svg" alt="">
+                </div>
+            </div>
+            <div class="products-catalogue-body">
+                <table class="catalogue__table">
+                    <thead>
+                        <tr>
+                            <th><span class="table__item-title"><p>Category</p><img class="catalogue__table-sort" src="img/sort.png" alt=""></span></th>
+                            <th>ID</th>
+                            <th><span class="table__item-title"><p>Name</p><img class="catalogue__table-sort" src="img/sort.png" alt=""></span></th>
+                            <th>Fits</th>
+                            <th>Aviability</th>
+                            <th><span class="table__item-title"><p>Price</p><img class="catalogue__table-sort" src="img/sort.png" alt=""></span></th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="catalogue__table-body">
+                        <tr class="catalogue__table-li">
+                            <td>Engine</td>
+                            <td>1</td>
+                            <td>water pump</td>
+                            <td>Volkswagen</td>
+                            <td>
+                                <p class="status outstock">Out of stock</p>
+                            </td>
+                            <td>5 USD</td>
+                            <td>
+                                <button class="catalogue__table-btn btn-edit">EDIT</button>
+                                <button class="catalogue__table-btn btn-delete">DELETE</button>
+                            </td>
+                        </tr>
+                        <tr class="catalogue__table-li">
+                            <td>Engine</td>
+                            <td>1</td>
+                            <td>Oil Filter</td>
+                            <td>Volkswagen</td>
+                            <td>
+                                <p class="status instock">In stock</p>
+                            </td>
+                            <td>5 USD</td>
+                            <td>
+                                <button class="catalogue__table-btn btn-edit">EDIT</button>
+                                <button class="catalogue__table-btn btn-delete">DELETE</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </main>
     <script src="https://unpkg.com/html-data-include@3.3.3/html-data-include.js"></script>
     <script src="js/products-catalogue.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,147 @@
+.products-catalogue {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(/img/vw-logo.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.products-catalogue-table {
+    width: 82vw;
+    height: 90vh;
+    background-color: #fff5;
+
+    box-shadow: 0 .4rem .9rem #0005;
+    border-radius: .8rem;
+    overflow: hidden;
+}
+
+.products-catalogue-header {
+    width: 100%;
+    height: 10%;
+    background-color: #fff4;
+    padding: .8rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.products-catalogue__search {
+    width: 45%;
+    height: 60%;
+    background-color: #fff5;
+    padding: 0 .8rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
+}
+
+.catalogue__table-sort {
+    width: 17px;
+    justify-content: center;
+}
+
+.table__item-title:hover {
+    text-align: center;
+    background-color: #fff9;
+    box-shadow: 0 .1rem .4rem #0002;
+    border-radius: .6rem;
+}
+
+.table__item-title {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.table__item-title p {
+    font-weight: bold;
+}
+
+.products-catalogue__search:hover {
+    width: 55%;
+    background-color: #fff9;
+    box-shadow: 0 .1rem .4rem #0002;
+}
+
+.products-catalogue__search img {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.products-catalogue__search input {
+    width: 100%;
+    padding: 0 .5rem 0 .3rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.products-catalogue-body {
+    width: 95%;
+    max-height: 89%;
+    background-color: #fffb;
+    margin: .9rem auto;
+    border-radius: .6rem;
+    overflow: auto;
+}
+
+.products-catalogue-body::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+.products-catalogue-body::-webkit-scrollbar-thumb {
+    border-radius: .5rem;
+    background-color: #0004;
+    visibility: hidden;
+}
+
+.products-catalogue-body:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
+}
+
+.status {
+    padding: .4rem 0;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.status.outstock {
+    background-color: #d893a3;
+    color: #b30021;
+}
+
+.status.instock {
+    background-color: #86e49d;
+    color: #006b21;
+}
+
+.catalogue__table-btn {
+    width: 45%;
+    padding: .4rem 0;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.catalogue__table-btn.btn-edit{
+    background-color: #86e49d;
+    color: #006b21;
+    border-color: transparent;
+}
+
+.catalogue__table-btn.btn-delete {
+    background-color: #d893a3;
+    color: #b30021;
+    border-color: transparent;
+}
+
+@media (max-width: 1000px) {
+    td:not(:first-of-type) {
+        min-width: 5.1rem;
+    }
+}
