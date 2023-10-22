@@ -22,6 +22,29 @@
 
 
 // ================================================================================================ рендер продуктів на сайті метод GET =======================>>>
+
+
+
+// document.addEventListener('DOMContentLoaded', function () {
+
+
+
+
+async function deleteProduct(id) {
+    const catalogueList = await fetch(`http://localhost:3000/api/catalogue.json/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+    const data = await catalogueList.json();
+    console.log(data);
+
+    if (data) {
+        document.getElementById(`product${id}`).remove();
+    }
+}
+
 async function getAllproducts() {
     const catalogueList = await fetch('/UA-1039-Samokhvalov/API/catalogue.json'); // существует гет параметр ?_limit=10
     const products = await catalogueList.json();
@@ -31,7 +54,7 @@ async function getAllproducts() {
 
 window.addEventListener('DOMContentLoaded', getAllproducts);
 
-function productsToHTML({category, id, name, fits, aviability, price, currency}) {
+function productsToHTML({ category, id, name, fits, aviability, price, currency }) {
     const productList = document.getElementById('catalogue');
 
     productList.insertAdjacentHTML('beforeend', `
@@ -46,8 +69,9 @@ function productsToHTML({category, id, name, fits, aviability, price, currency})
     <td>${price} ${currency}</td>
     <td>
         <button class="catalogue__table-btn btn-edit">EDIT</button>
-        <button class="catalogue__table-btn btn-delete">DELETE</button>
+        <button onclick='deleteProduct(${id})' class="catalogue__table-btn btn-delete" id="${id}">DELETE</button>
     </td>
     </tr>
     `);
 }
+// }); 

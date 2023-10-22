@@ -25,7 +25,7 @@ async function submitForm(item) {
             id: item[1].value,
             name: item[2].value,
             fits: item[3].value,
-            availability: item[4].value, // Помітили виправлену орфографічну помилку у "availability".
+            availability: item[4].value,
             price: item[5].value,
         };
 
