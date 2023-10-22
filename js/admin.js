@@ -22,14 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function submitForm(item) {
         if (checkAllFields(item)) {
             const data = {
-                name: item[0].value ,
+                category: item[0].value ,
                 id: item[1].value,
-                type: item[2].value,
-                price: item[3].value,
-                currency: item[4].value,
-                inStock: item[5].value,
-                image: item[6].value,
-                fits: item[6].value,
+                name: item[2].value,
+                fits: item[3].value,
+                aviability: item[4].value,
+                price: item[5].value,
             };
 
             if (checkPrice(data.price)) {

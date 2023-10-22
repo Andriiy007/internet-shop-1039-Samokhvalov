@@ -7,5 +7,32 @@
         "aviability": true,
         "price": 5,
         "currency": "USD"
+    },
+    {
+        "category": "body",
+        "id": 2,
+        "name": "hood",
+        "fits": "Volkswagen",
+        "aviability": true,
+        "price": 300,
+        "currency": "USD"
+    },
+    {
+        "category": "brake",
+        "id": 3,
+        "name": "disk brake",
+        "fits": "Volkswagen",
+        "aviability": true,
+        "price": 217,
+        "currency": "USD"
+    },
+    {
+        "category": "electric",
+        "id": 4,
+        "name": "headlight",
+        "fits": "Volkswagen",
+        "aviability": true,
+        "price": 615,
+        "currency": "USD"
     }
 ]

@@ -1,0 +1,22 @@
+{
+  "name": "ua-1039-samokhvalov-main",
+  "version": "1.0.0",
+  "description": "personal project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamikQ/UA-1039-Samokhvalov.git"
+  },
+  "keywords": [
+    "online-shop"
+  ],
+  "author": "Samokhvalov.dmytro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamikQ/UA-1039-Samokhvalov/issues"
+  },
+  "homepage": "https://github.com/SamikQ/UA-1039-Samokhvalov#readme"
+}

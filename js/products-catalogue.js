@@ -19,9 +19,3 @@ function searchTable() {
 
 const sortBtns = document.querySelectorAll('.table__item-title');
 
-function sortBy(e) {
-    sortBtns.forEach(item => {
-        if ();
-    })
-}
-
