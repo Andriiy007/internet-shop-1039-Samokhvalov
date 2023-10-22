@@ -27,6 +27,7 @@ async function submitForm(item) {
             fits: item[3].value,
             availability: new Boolean(item[4].value),
             price: parseInt(item[5].value),
+            currency: item[6].value,
         };
 
         if (checkPrice(data.price)) {

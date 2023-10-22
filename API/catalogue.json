@@ -4,31 +4,35 @@
         "id": 2,
         "name": "Oil filter",
         "fits": "volkswagen",
-        "availability": "true",
-        "price": 10
+        "availability": true,
+        "price": 10,
+        "currency": "USD"
     },
     {
         "category": "Electric",
         "id": 3,
         "name": "Headlight",
         "fits": "vw",
-        "availability": "false",
-        "price": 600
+        "availability": false,
+        "price": 600,
+        "currency": "USD"
     },
     {
         "category": "Body",
-        "id": 4,
-        "name": "door",
-        "fits": "volkswagen",
-        "availability": false,
-        "price": 850
+        "id": 1,
+        "name": "Hood",
+        "fits": "vw",
+        "availability": true,
+        "price": 900,
+        "currency": "USD"
     },
     {
         "category": "Electric",
-        "id": 251,
-        "name": "Fog Light",
+        "id": 5,
+        "name": "Fog Lamp",
         "fits": "vw",
         "availability": true,
-        "price": 119
+        "price": 109,
+        "currency": "USD"
     }
 ]

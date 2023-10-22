@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/SamikQ/UA-1039-Samokhvalov/issues"
   },
-  "homepage": "https://github.com/SamikQ/UA-1039-Samokhvalov#readme"
+  "homepage": "https://github.com/SamikQ/UA-1039-Samokhvalov#readme",
+  "dependencies": {
+    "method-override": "^3.0.0"
+  }
 }
