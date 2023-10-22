@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <header data-include="/partials/header.partial.html"></header>
+    <header data-include="./partials/header.partial.html"></header>
     <main class="products-catalogue">
         <div class="products-catalogue-table">
             <div class="products-catalogue-header">
@@ -34,7 +34,7 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="catalogue__table-body">
+                    <tbody class="catalogue__table-body" id="catalogue">
                         <tr class="catalogue__table-li">
                             <td>Engine</td>
                             <td>1</td>
@@ -49,27 +49,13 @@
                                 <button class="catalogue__table-btn btn-delete">DELETE</button>
                             </td>
                         </tr>
-                        <tr class="catalogue__table-li">
-                            <td>Engine</td>
-                            <td>1</td>
-                            <td>Oil Filter</td>
-                            <td>Volkswagen</td>
-                            <td>
-                                <p class="status instock">In stock</p>
-                            </td>
-                            <td>5 USD</td>
-                            <td>
-                                <button class="catalogue__table-btn btn-edit">EDIT</button>
-                                <button class="catalogue__table-btn btn-delete">DELETE</button>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </main>
     <script src="https://unpkg.com/html-data-include@3.3.3/html-data-include.js"></script>
-    <script type="module" src="js/index.js"></script>
+    <script src="js/products-catalogue.js"></script>
 </body>
 
 </html>

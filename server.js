@@ -1,28 +1,46 @@
 const fs = require('fs').promises;
-const { json } = require('stream/consumers');
-const catalogue = require('./API/catalogue.json');
-// const admin = require('./js/admin.js');
 const http = require('http');
-const PORT = 3000; 
+const url = require('url');
+const catalogue = require('./API/catalogue.json');
 
-const server = http.createServer(function(req, res) {  // <<<<<------  Роутер (функція, яка представляє собою роутер, який аналізує запити користувача (аргумент: req = на який саме ресурс звертається користувач))
-    // res - це обєкт який треба викликати, щоб відправити щось на фронт-енд)
-    console.log(req.url); // налаштування роутів: якщо постукались туди-то , то треба зробити наступне.
-    res.writeHead(200, {'Content-type' : 'text/html'});
-    res.write('<h1>Names:</h1>');
-    catalogue.forEach(item =>{
-        res.write(`<li>${item.name}</li>`);
-    })
-    // необхідно вказати, які саме дані ми передаємо. який заголовок функцією res.writeHead(200, {'Content-Type' : 'text/html'}) - в цьому випадку клієнт розуміє що прийшов html і він його може одразу відрендерити.
-    res.end(`</ul>`);
+const PORT = 3000;
 
-// щоб відправити відповідь, необхідно використати функцію res.end();
+const server = http.createServer(async function (req, res) {
+    if (req.method === 'POST' && req.url === 'api/catalogue.json') {
+        let body = '';
+
+        req.on('data', (chunk) => {
+            body += chunk.toString();
+        });
+
+        req.on('end', async () => {
+            try {
+                const data = JSON.parse(body);
+                // Опрацьовуйте дані та зберігайте їх у каталозі, наприклад, catalogue.json
+                // Переконайтеся, що у вас існує файлий з такою назвою та обробляйте дані відповідним чином.
+
+                // Наприклад, можна додати отримані дані до catalogue.json
+                catalogue.push(data);
+                await fs.writeFile('API/catalogue.json', JSON.stringify(catalogue));
+
+                res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5500/UA-1039-Samokhvalov/add-form');
+                res.setHeader('Access-Control-Allow-Methods', 'POST');
+                res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Замініть це на домен вашого клієнта
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify(data));
+            } catch (error) {
+                res.writeHead(400, { 'Content-Type': 'text/plain' });
+                res.end('Помилка при обробці запиту.');
+            }
+        });
+    } else {
+        res.writeHead(404, { 'Content-Type': 'text/plain' });
+        res.end('Сторінку не знайдено.');
+    }
 });
 
-server.listen(PORT); // щоб відправляти запити на сервери, необхідно вказати функцію listen() , в яку необхідно додати порт, який буде слідкувати за портом і опрацьовувати запити.
-console.log(`SERVER running at ${PORT}`);
-
-
+server.listen(PORT);
+console.log(`Сервер працює на порті ${PORT}`);
 // async function start() {
 //     console.log('STARTED');
 //     await fs.writeFile('test.txt', 'hello world');
@@ -31,10 +49,6 @@ console.log(`SERVER running at ${PORT}`);
 //     console.log(data);
 // }
 // start();
-
-
-
-
 
 // ===================================================================================== Код для роботи без .promises
 
