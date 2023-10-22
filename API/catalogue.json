@@ -1,1 +1,34 @@
-[{"category":"engine","id":1,"name":"Oil filter","fits":"Volkswagen","aviability":true,"price":5,"currency":"USD"},{"category":"body","id":2,"name":"hood","fits":"Volkswagen","aviability":true,"price":300,"currency":"USD"},{"category":"brake","id":3,"name":"disk brake","fits":"Volkswagen","aviability":true,"price":217,"currency":"USD"},{"category":"electric","id":4,"name":"headlight","fits":"Volkswagen","aviability":true,"price":615,"currency":"USD"},{"category":"asd","id":"asd","name":"asd","fits":"asd","availability":"asd","price":"1231"},{"category":"body","id":"42131","name":"door","fits":"volkswage","availability":"true","price":"250"},{"category":"electric","id":"4146192","name":"ingition","fits":"volkswagen","availability":"true","price":"211"},{"category":"weqwe","id":"qwe","name":"qweqw","fits":"qweqweqw","availability":"tre","price":"321"},{"category":"sdas","id":"dasd","name":"dasd","fits":"asdas","availability":"ads","price":"1231"}]
+[
+    {
+        "category": "Engine",
+        "id": 2,
+        "name": "Oil filter",
+        "fits": "volkswagen",
+        "availability": "true",
+        "price": 10
+    },
+    {
+        "category": "Electric",
+        "id": 3,
+        "name": "Headlight",
+        "fits": "vw",
+        "availability": "false",
+        "price": 600
+    },
+    {
+        "category": "Body",
+        "id": 4,
+        "name": "door",
+        "fits": "volkswagen",
+        "availability": false,
+        "price": 850
+    },
+    {
+        "category": "Electric",
+        "id": 251,
+        "name": "Fog Light",
+        "fits": "vw",
+        "availability": true,
+        "price": 119
+    }
+]

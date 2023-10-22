@@ -54,7 +54,7 @@ async function getAllproducts() {
 
 window.addEventListener('DOMContentLoaded', getAllproducts);
 
-function productsToHTML({ category, id, name, fits, aviability, price, currency }) {
+function productsToHTML({ category, id, name, fits, availability, price, currency }) {
     const productList = document.getElementById('catalogue');
 
     productList.insertAdjacentHTML('beforeend', `
@@ -64,12 +64,12 @@ function productsToHTML({ category, id, name, fits, aviability, price, currency 
     <td>${name}</td>
     <td>${fits}</td>
     <td>
-        <p class="status ${aviability ? 'instock' : 'outstock'}"> ${aviability ? 'instock' : 'outstock'}</p>
+        <p class="status ${availability ? 'instock' : 'outstock'}"> ${availability ? 'instock' : 'outstock'}</p>
     </td>
     <td>${price} ${currency}</td>
     <td>
         <button class="catalogue__table-btn btn-edit">EDIT</button>
-        <button onclick='deleteProduct(${id})' class="catalogue__table-btn btn-delete" id="${id}">DELETE</button>
+        <button onclick='deleteProduct(${id})' class="catalogue__table-btn btn-delete" id="${id}">DEL</button>
     </td>
     </tr>
     `);

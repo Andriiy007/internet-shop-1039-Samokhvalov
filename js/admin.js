@@ -22,11 +22,11 @@ async function submitForm(item) {
     if (checkAllFields(item)) {
         const data = {
             category: item[0].value,
-            id: item[1].value,
+            id: parseInt(item[1].value),
             name: item[2].value,
             fits: item[3].value,
-            availability: item[4].value,
-            price: item[5].value,
+            availability: new Boolean(item[4].value),
+            price: parseInt(item[5].value),
         };
 
         if (checkPrice(data.price)) {
