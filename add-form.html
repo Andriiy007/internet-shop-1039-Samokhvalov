@@ -9,27 +9,50 @@
         <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 
-<body>
+<body class="admin__body">
         <header data-include="partials/header.partial.html"></header>
         <main>
                 <div class="admin__add-form">
                         <ul class="add__form">
-                                <li class="add__form-li"><span class="add__form-name">Item Category:</span><input
-                                                class="add__form-text" type="text"></li>
-                                <li class="add__form-li"><span class="add__form-name">Item Code:</span><input
+                                <li class="add__form-li"><span class="add__form-name">Item Category:</span><select
+                                                class="add__form-text" type="text">
+                                                <option class="list-item">Engine</option>
+                                                <option class="list-item">Brakes</option>
+                                                <option class="list-item">Exhaust</option>
+                                                <option class="list-item">Suspension</option>
+                                                <option class="list-item">Body</option>
+                                                <option class="list-item">Interior</option>
+                                        </select></li>
+                                <li class="add__form-li"><label class="add__form-name">Item Code:</label><input
                                                 class="add__form-text" type="text"></li>
                                 <li class="add__form-li"><span class="add__form-name">Item Name:</span><input
                                                 class="add__form-text" type="text"></li>
                                 <li class="add__form-li"><span class="add__form-name">Item Fits:</span><input
                                                 class="add__form-text" type="text"></li>
-                                <li class="add__form-li"><span class="add__form-name">Item Available:</span><input
-                                                class="add__form-text" type="text"></li>
+                                <li class="add__form-li"><span class="add__form-name">Item Available:</span><select
+                                                class="add__form-text" type="text">
+                                                <option class="list-item">True</option>
+                                                <option class="list-item">False</option>
+                                        </select>
+                                </li>
                                 <li class="add__form-li"><span class="add__form-name">Item Price:</span><input
                                                 class="add__form-text" type="text"></li>
-                                <li class="add__form-li"><span class="add__form-name">currency:</span><input
-                                                class="add__form-text" type="text"></li>
+                                <li class="add__form-li"><span class="add__form-name">Currency:</span><select
+                                                class="add__form-text" type="text">
+                                                <option class="list-item">USD</option>
+                                                <option class="list-item">EUR</option>
+                                                <option class="list-item">UAH</option>
+                                        </select>
+                                </li>
+                                <div class="add__form-text">
+                                        <div class="login-box"><button class="add__btn btn" type="submit">
+                                                        <span></span>
+                                                        <span></span>
+                                                        <span></span>
+                                                        <span></span>Confirm</button>
+                                        </div>
+                                </div>
                         </ul>
-                        <button class="add__btn btn" type="submit">Confirm</button>
                 </div>
         </main>
         <script src="https://unpkg.com/html-data-include@3.3.3/html-data-include.js"></script>
