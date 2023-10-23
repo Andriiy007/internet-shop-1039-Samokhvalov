@@ -25,6 +25,10 @@
   transition: .5s ease-in-out var(--delay);
 }
 
+.edit-mode {
+  border: 1px solid #000; /* Додайте стилі за бажанням для виділення активного поля */
+}
+
 p,
 a {
   font-family: var(--font-p);

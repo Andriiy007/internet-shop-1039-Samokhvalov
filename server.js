@@ -1,86 +1,117 @@
-const fs = require('fs').promises;
-const http = require('http');
-const url = require('url');
-const catalogue = require('./API/catalogue.json');
+const fs = require("fs").promises;
+const http = require("http");
+const url = require("url");
+const catalogue = require("./API/catalogue.json");
 
 const PORT = 3000;
 
 const server = http.createServer(async function (req, res) {
-    const headers = {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'OPTIONS, POST, GET, DELETE',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Max-Age': 2592000, // 30 days
-    };
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "OPTIONS, POST, PUT, GET, DELETE",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Max-Age": 2592000, // 30 days
+  };
 
-    if (req.method === 'OPTIONS') {
-        res.writeHead(204, headers);
-        res.end();
-        return;
-    } else if (req.method === 'GET' && req.url === '/api/catalogue.json') {
-        res.writeHead(200, {
-            ...headers,
-            'Content-Type': 'application/json'
-        });
-        res.end(JSON.stringify(catalogue));
-        return;
-    } else if (req.method === 'DELETE' && req.url.startsWith('/api/catalogue.json/')) {
-        // Отримайте ідентифікатор продукту з URL, наприклад, /api/catalogue/1
-        const parts = req.url.split('/');
-        const id = parseInt(parts[parts.length - 1], 10);
+  if (req.method === "OPTIONS") {
+    res.writeHead(204, headers);
+    res.end();
+    return;
+  } else if (req.method === "GET" && req.url === "/api/catalogue.json") {
+    res.writeHead(200, {
+      ...headers,
+      "Content-Type": "application/json",
+    });
+    res.end(JSON.stringify(catalogue));
+    return;
+  } else if (
+    req.method === "DELETE" &&
+    req.url.startsWith("/api/catalogue.json/")
+  ) {
+    // Отримайте ідентифікатор продукту з URL, наприклад, /api/catalogue/1
+    const parts = req.url.split("/");
+    const id = parseInt(parts[parts.length - 1], 10);
 
-        // Знайдіть індекс продукту за id у вашому масиві "catalogue"
-        const index = catalogue.findIndex(product => product.id === id);
+    // Знайдіть індекс продукту за id у вашому масиві "catalogue"
+    const index = catalogue.findIndex((product) => product.id === id);
 
-        if (index !== -1) {
-            // Якщо продукт знайдено, видаліть його з масиву
-            catalogue.splice(index, 1);
+    if (index !== -1) {
+      // Якщо продукт знайдено, видаліть його з масиву
+      catalogue.splice(index, 1);
 
-            // Оновіть JSON-файл на сервері
-            await fs.writeFile('API/catalogue.json', JSON.stringify(catalogue));
+      // Оновіть JSON-файл на сервері
+      await fs.writeFile("API/catalogue.json", JSON.stringify(catalogue));
 
-            res.writeHead(202, {
-                ...headers,
-                'Content-Type': 'application/json'
-            });
-            res.end(JSON.stringify({ id }));
-        } else {
-            res.writeHead(404, {
-                'Content-Type': 'text/plain'
-            });
-            res.end('Продукт не знайдено');
-        }
-    } else if (req.method === 'POST' && req.url === '/api/catalogue.json') {
-        let body = '';
-
-        req.on('data', (chunk) => {
-            body += chunk.toString();
-        });
-
-        req.on('end', async () => {
-            try {
-                const data = JSON.parse(body);
-                // Опрацьовуйте дані та зберігайте їх у каталозі, наприклад, catalogue.json
-                // Переконайтеся, що у вас існує файлий з такою назвою та обробляйте дані відповідним чином.
-
-                // Наприклад, можна додати отримані дані до catalogue.json
-                catalogue.push(data);
-                await fs.writeFile('api/catalogue.json', JSON.stringify(catalogue));
-
-                res.writeHead(200, {
-                    ...headers,
-                    'Content-Type': 'application/json'
-                });
-                res.end(JSON.stringify(data));
-            } catch (error) {
-                res.writeHead(400, { 'Content-Type': 'text/plain' });
-                res.end('Помилка при обробці запиту.');
-            }
-        });
+      res.writeHead(202, {
+        ...headers,
+        "Content-Type": "application/json",
+      });
+      res.end(JSON.stringify({ id }));
     } else {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('Сторінку не знайдено');
+      res.writeHead(404, {
+        "Content-Type": "text/plain",
+      });
+      res.end("Продукт не знайдено");
     }
+  } else if (req.method === "POST" && req.url === "/api/catalogue.json") {
+    let body = "";
+
+    req.on("data", (chunk) => {
+      body += chunk.toString();
+    });
+
+    req.on("end", async () => {
+      try {
+        const data = JSON.parse(body);
+        // Опрацьовуйте дані та зберігайте їх у каталозі, наприклад, catalogue.json
+        // Переконайтеся, що у вас існує файлий з такою назвою та обробляйте дані відповідним чином.
+
+        // Наприклад, можна додати отримані дані до catalogue.json
+        catalogue.push(data);
+        await fs.writeFile("api/catalogue.json", JSON.stringify(catalogue));
+
+        res.writeHead(200, {
+          ...headers,
+          "Content-Type": "application/json",
+        });
+        res.end(JSON.stringify(data));
+      } catch (error) {
+        res.writeHead(400, { "Content-Type": "text/plain" });
+        res.end("Помилка при обробці запиту.");
+      }
+    });
+    //=================================================================================== PUT products-catalogue
+//   } else if (req.method === "PUT" && req.url === "/api/catalogue.json") {
+//     let body = "";
+
+//     req.on("data", (chunk) => {
+//       body += chunk.toString();
+//     });
+
+//     req.on("end", async () => {
+//       try {
+//         const data = JSON.parse(body);
+//         // Опрацьовуйте дані та зберігайте їх у каталозі, наприклад, catalogue.json
+//         // Переконайтеся, що у вас існує файлий з такою назвою та обробляйте дані відповідним чином.
+
+//         // Наприклад, можна додати отримані дані до catalogue.json
+//         catalogue.push(data);
+//         await fs.writeFile("api/catalogue.json", JSON.stringify(catalogue));
+
+//         res.writeHead(200, {
+//           ...headers,
+//           "Content-Type": "application/json",
+//         });
+//         res.end(JSON.stringify(data));
+//       } catch (error) {
+//         res.writeHead(400, { "Content-Type": "text/plain" });
+//         res.end("Помилка при обробці запиту.");
+//       }
+//     });
+  } else {
+    res.writeHead(404, { "Content-Type": "text/plain" });
+    res.end("Сторінку не знайдено");
+  }
 });
 
 server.listen(PORT);
@@ -207,9 +238,6 @@ console.log(`Сервер працює на порті ${PORT}`);
 //         console.log('end');
 //     });
 // });
-
-
-
 
 // ===================================================================================== Приклад обробки JSON файлу.
 /* const server = http.createServer(function(req, res) { 

@@ -56,7 +56,7 @@ async function submitForm(item) {
 
 
 
-/* ============================================================================================ мій працюючий код 
+/* ============================================================================================ код зі збереженням даних в Локах Сторейдж
 document.addEventListener('DOMContentLoaded', () => {
     const addForm = document.querySelectorAll('.add__form-text');
     const addBtn = document.querySelector('.add__btn');
