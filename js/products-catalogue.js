@@ -6,7 +6,7 @@ class ProductRenderer {
     this.rate = 1;
   }
   renderProduct() {
-    const { category, id, name, fits, availability, price, rate } =
+    const { category, id, name, fits, availability, price} =
       this.product;
     const productList = document.getElementById("catalogue");
     productList.insertAdjacentHTML(
@@ -34,13 +34,8 @@ class ProductRenderer {
             </tr>
         `
     );
-  }
-  async convertCurrency() {
     const convertTo = document.querySelector('.products__currency').value;
-    const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
-    const currencies = await response.json();
-    const rate = currencies.rates[convertTo];
-}
+  }
 }
 
 async function deleteProduct(id) {
@@ -103,4 +98,11 @@ async function getAllproducts() {
     const productRenderer = new ProductRenderer(product);
     productRenderer.renderProduct();
   });
+  convertCurrency(convertTo);
+}
+
+async function convertCurrency(rate) {
+    const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+    const currencies = await response.json();
+    return rate = currencies.rates[convertTo];
 }
