@@ -133,7 +133,7 @@ async function editProduct(item) {
         currency: item[6].value,
     };
 
-    const jsonData = await fetch(`http://localhost:5000/api/catalogue.json/`, {
+    const jsonData = await fetch('http://localhost:5000/api/catalogue.json', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

@@ -24,7 +24,10 @@ const server = http.createServer(async function (req, res) {
     });
     res.end(JSON.stringify(catalogue));
     return;
-  } else if (req.method === "DELETE" && req.url.startsWith("/api/catalogue.json/")) {
+  } else if (
+    req.method === "DELETE" &&
+    req.url.startsWith("/api/catalogue.json/")
+  ) {
     const parts = req.url.split("/");
     const id = parseInt(parts[parts.length - 1], 10);
     const index = catalogue.findIndex((product) => product.id === id);
@@ -61,37 +64,43 @@ const server = http.createServer(async function (req, res) {
         });
         res.end(JSON.stringify(data));
       } catch (error) {
-        res.writeHead(400, { "Content-Type": "text/plain" });
+        res.writeHead(400, { ...headers, 'Content-Type': 'application/json' });
         res.end("Помилка при обробці запиту.");
       }
     });
-  } else if (req.method === 'PUT' && req.url.startsWith("/api/catalogue.json/")) {
+  } else if (
+    req.method === "PUT" &&
+    req.url.startsWith("/api/catalogue.json/")
+  ) {
     const parts = req.url.split("/");
     const id = parseInt(parts[parts.length - 1], 10);
     const index = catalogue.findIndex((product) => product.id === id);
-  
+
     if (index !== -1) {
-      let data = '';
-  
-      req.on('data', (chunk) => {
+      let data = "";
+
+      req.on("data", (chunk) => {
         data += chunk;
       });
-  
-      req.on('end', async () => {
+
+      req.on("end", async () => {
         try {
           const body = JSON.parse(data);
           catalogue[index] = body;
           await writeFile("API/catalogue.json", JSON.stringify(catalogue));
-          await writeFile(index + '.json', JSON.stringify(body));  
-          res.writeHead(200, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({ message: 'Ресурс оновлено успішно' }));
+          await writeFile(index + ".json", JSON.stringify(body));
+          res.writeHead(200, {
+            ...headers,
+            "Content-Type": "application/json",
+          });
+          res.end(JSON.stringify({ message: "updated succesfully"}));
         } catch (error) {
-          res.writeHead(400, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({ error: 'Некоректні дані' }));
+          res.writeHead(400, { ...headers, 'Content-Type': 'application/json'});
+          res.end(JSON.stringify({ error: "Некоректні дані" }));
         }
       });
     } else {
-      res.writeHead(404, { "Content-Type": "text/plain" });
+      res.writeHead(404, { ...headers, "Content-Type": "application/json" });
       res.end("Сторінку не знайдено");
     }
   }
