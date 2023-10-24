@@ -1,6 +1,5 @@
 const fs = require("fs").promises;
 const http = require("http");
-const url = require("url");
 const catalogue = require("./API/catalogue.json");
 
 const PORT = 5000;
@@ -87,8 +86,8 @@ const server = http.createServer(async function (req, res) {
         try {
           const body = JSON.parse(data);
           catalogue[index] = body;
-          await writeFile("API/catalogue.json", JSON.stringify(catalogue));
-          await writeFile(index + ".json", JSON.stringify(body));
+          await fs.swriteFile("API/catalogue.json", JSON.stringify(catalogue));
+          await fs.writeFile(index + ".json", JSON.stringify(body));
           res.writeHead(200, {
             ...headers,
             "Content-Type": "application/json",

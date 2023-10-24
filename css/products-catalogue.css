@@ -40,9 +40,16 @@
     transition: .2s;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
 .catalogue__table-sort {
     width: 17px;
     justify-content: center;
+    text-decoration:none;
 }
 
 .table__item-title:hover {
@@ -50,6 +57,7 @@
     background-color: #fff9;
     box-shadow: 0 .1rem .4rem #0002;
     border-radius: .6rem;
+    text-decoration:none;
 }
 
 .table__item-title {

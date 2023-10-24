@@ -1,21 +1,35 @@
-window.addEventListener('DOMContentLoaded', getAllproducts);
+window.addEventListener("DOMContentLoaded", getAllproducts);
+
+const sortByCategory = document.getElementById("sortByCategory").firstChild;
+let categoryList = [];
+
+function sortBy(arr) {
+   arr.sort();
+  return arr;
+}
+
+let btnCategory = document.getElementById("sortByCategory")
+.addEventListener("click", function () {
+  sortBy(categoryList);
+});
 
 let addForm = [];
 
 function renderProduct(product) {
-    const { category, id, name, fits, availability, price, currency } = product;
-    const productList = document.getElementById("catalogue");
-    productList.insertAdjacentHTML(
-        "beforeend",
-        `
+  const { category, id, name, fits, availability, price, currency } = product;
+  const productList = document.getElementById("catalogue");
+  productList.insertAdjacentHTML(
+    "beforeend",
+    `
         <tr class="catalogue__table-li" id="${id}">
-          <td class="editable-cell">${category}</td>
+          <td class="editable-cell__category" id="cell-category">${category}</td>
           <td class="editable-cell">${id}</td>
           <td class="editable-cell">${name}</td>
           <td class="editable-cell">${fits}</td>
           <td>
-            <p class="status ${availability ? "instock" : "outstock"}">${availability ? "instock" : "out stock"
-        }</p>
+            <p class="status ${availability ? "instock" : "outstock"}">${
+      availability ? "instock" : "out stock"
+    }</p>
           </td>
           <td class="editable-cell">${price} ${currency}</td>
           <td>
@@ -24,32 +38,34 @@ function renderProduct(product) {
           </td>
         </tr>
       `
-    );
+  );
+  categoryList = document.getElementsByClassName("catalogue__table-li");
 }
 
 async function myModal(id) {
-    await getProductById(id);
-    document.querySelector('.change__form').classList.remove('hidden');
+  await getProductById(id);
+  document.querySelector(".change__form").classList.remove("hidden");
 }
 
 async function closeMyModal() {
-    setTimeout(function() {
-        document.querySelector('.add__form').remove();
-        document.querySelector('.change__form').classList.add('hidden');
-    }, 1000);
+  setTimeout(function () {
+    document.querySelector(".add__form").remove();
+    document.querySelector(".change__form").classList.add("hidden");
+  }, 1000);
 }
 
 async function getProductById(id) {
-    const response = await fetch('http://localhost:5000/api/catalogue.json');
-    const products = await response.json();
-    const item = await products.find(product => product.id === id);
-    changeItem(item);
+  const response = await fetch("http://localhost:5000/api/catalogue.json");
+  const products = await response.json();
+  const item = await products.find((product) => product.id === id);
+  changeItem(item);
 }
 
 async function changeItem(product) {
-    const changeForm = document.querySelector('.admin__add-form');
-    changeForm.insertAdjacentHTML(
-        "afterbegin", `
+  const changeForm = document.querySelector(".admin__add-form");
+  changeForm.insertAdjacentHTML(
+    "afterbegin",
+    `
         <ul class="add__form">
             <li class="add__form-li"><span class="add__form-name">Item Category:</span>
                 <select class="add__form-text" type="text">
@@ -91,60 +107,65 @@ async function changeItem(product) {
             </li>
         </ul>
 `
-    );
-    addForm = document.querySelectorAll('.add__form-text');
-    let btnChange = document.getElementById('btn-change').addEventListener('click', function () {
-        editProduct(addForm);
-        closeMyModal();
+  );
+  addForm = document.querySelectorAll(".add__form-text");
+  let btnChange = document
+    .getElementById("btn-change")
+    .addEventListener("click", function () {
+      editProduct(addForm);
+      closeMyModal();
     });
-    console.log(addForm);
-    console.log(btnChange);// editProduct(addForm);
+  console.log(addForm);
+  console.log(btnChange);
 }
 async function deleteProduct(id) {
-    const catalogueList = await fetch(`http://localhost:5000/api/catalogue.json/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    });
-    const data = await catalogueList.json();
-    console.log(data);
-    if (data) {
-        document.getElementById(`product${id}`).remove();
+  const catalogueList = await fetch(
+    `http://localhost:5000/api/catalogue.json/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
     }
+  );
+  const data = await catalogueList.json();
+  console.log(data);
+  if (data) {
+    document.getElementById(`product${id}`).remove();
+  }
 }
 
 async function getAllproducts() {
-    const catalogueList = await fetch('http://localhost:5000/api/catalogue.json');
-    const products = await catalogueList.json();
-    products.forEach(product => {
-        renderProduct(product);
-    });
+  const catalogueList = await fetch("http://localhost:5000/api/catalogue.json");
+  const products = await catalogueList.json();
+  products.forEach((product) => {
+    renderProduct(product);
+  });
 }
 
 async function editProduct(item) {
-    const data = {
-        category: item[0].value,
-        id: parseInt(item[1].value),
-        name: item[2].value,
-        fits: item[3].value,
-        availability: new Boolean(item[4].value),
-        price: parseInt(item[5].value),
-        currency: item[6].value,
-    };
+  const data = {
+    category: item[0].value,
+    id: parseInt(item[1].value),
+    name: item[2].value,
+    fits: item[3].value,
+    availability: new Boolean(item[4].value),
+    price: parseInt(item[5].value),
+    currency: item[6].value,
+  };
 
-    const jsonData = await fetch('http://localhost:5000/api/catalogue.json', {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    });
-    if (jsonData.ok) {
-        const product = await jsonData.json();
-        console.log(product);
-        console.log('Дані були збережені на сервері.');
-    } else {
-        console.error('Помилка при відправці даних на сервер.');
-    }
-} 
+  const jsonData = await fetch("http://localhost:5000/api/catalogue.json", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  if (jsonData.ok) {
+    const product = await jsonData.json();
+    console.log(product);
+    console.log("Дані були збережені на сервері.");
+  } else {
+    console.error("Помилка при відправці даних на сервер.");
+  }
+}

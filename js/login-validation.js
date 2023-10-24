@@ -1,47 +1,14 @@
-document.addEventListener('DOMContentLoaded', () => { 
-var list=[];
-
-var userName = document.querySelector('.user-box');
-
-// function validate(){
-//   var messEle=document.body.querySelector(".valMess")
-//   var username=document.body.querySelector(".userbox").value
-//   var password=document.body.querySelector(".password").value
-  
-//   if(username==="luke"&&password==="pass"){
-//     messEle.innerHTML="Submitted"
-//   }else{
-//     messEle.innerHTML="username or password was incorrect"
-//   }
-// }
-
-// document.body.querySelector(".validate").addEventListener("click", function(){
-//   validate()
-// })
-
-// //Render the items for the list
-// function renderItems(){
-//   document.body.querySelector(".display").innerHTML="";
-//   for(var i=0; i<list.length; i++){
-//     var ele = document.createElement("div");
-//     ele.innerHTML=list[i];
-//     document.body.querySelector(".display").appendChild(ele);
-//   }
-// }
-
-// //Submit The Items into the list
-// function submit(){
-//   var text=document.body.querySelector(".text").value;
-//   if(text.legth!==1){
-//     document.body.querySelector(".subMess").innerHTML=""
-//     list.push(text);
-//   }else
-//     document.body.querySelector(".submit").innerHTML="Not Enought Letters"
-//   renderItems();
-// }
-// document.body.querySelector(".submit").addEventListener("click", function(){
-//   submit();
-// });
-
-// renderItems();
+document.addEventListener('DOMContentLoaded', () => {
+    function validateCredentials() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        if (username === 'user' && password === 'pass') {
+            alert('You have successfully logged in.');
+            window.location.href = 'http://127.0.0.1:5500/UA-1039-Samokhvalov/products-catalogue.html';
+        } else {
+            alert('Incorrect username or password. Please try again.');
+        }
+    }
+    const submit = document.getElementById('submit-button');
+    submit.addEventListener('click', validateCredentials);
 });

@@ -41,7 +41,7 @@ async function submitForm(item) {
             if (jsonData.ok) {
                 const product = await jsonData.json();
                 console.log(product);
-                console.log('Дані були збережені на сервері.');
+                alert('Дані були збережені на сервері.');
             } else {
                 console.error('Помилка при відправці даних на сервер.');
             }
