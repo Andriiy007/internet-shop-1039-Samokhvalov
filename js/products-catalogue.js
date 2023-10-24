@@ -1,5 +1,6 @@
-"use strict";
 window.addEventListener('DOMContentLoaded', getAllproducts);
+
+let addForm = [];
 
 function renderProduct(product) {
     const { category, id, name, fits, availability, price, currency } = product;
@@ -32,17 +33,17 @@ async function myModal(id) {
 }
 
 async function closeMyModal() {
-    document.querySelector('.add__form').remove();
-    document.querySelector('.change__form').classList.add('hidden')
+    setTimeout(function() {
+        document.querySelector('.add__form').remove();
+        document.querySelector('.change__form').classList.add('hidden');
+    }, 1000);
 }
 
 async function getProductById(id) {
-    const response = await fetch('/UA-1039-Samokhvalov/API/catalogue.json');
+    const response = await fetch('http://localhost:5000/api/catalogue.json');
     const products = await response.json();
-    const item = products.find(product => product.id === id);
-    window.addEventListener('DOMContentLoaded',changeItem(item));
-
-    await editProduct(item);
+    const item = await products.find(product => product.id === id);
+    changeItem(item);
 }
 
 async function changeItem(product) {
@@ -65,7 +66,7 @@ async function changeItem(product) {
                 <input class="add__form-text" type="text" value="${product.id}">
             </li>
             <li class="add__form-li"><span class="add__form-name">Item Name:</span>
-                <inputclass="add__form-text" type="text"  value="${product.name}">
+                <input class="add__form-text" type="text"  value="${product.name}">
             </li>
             <li class="add__form-li"><span class="add__form-name">Item Fits:</span>
                  <input class="add__form-text" type="text"  value="${product.fits}">
@@ -89,25 +90,18 @@ async function changeItem(product) {
                 </select>
             </li>
         </ul>
-        <div class="add__form-text">
-            <span class="login-box"><button onclick="editProduct(item)" class="add__btn btn-change" id="btn-change" type="submit">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>Confirm changes</button>
-            </span>
-             <span class="login-box"><button onclick="closeMyModal()" class="btn-close add__btn" id="btn-close" type="submit">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>Close</button>
-            </span>
-        </div>
 `
     );
+    addForm = document.querySelectorAll('.add__form-text');
+    let btnChange = document.getElementById('btn-change').addEventListener('click', function () {
+        editProduct(addForm);
+        closeMyModal();
+    });
+    console.log(addForm);
+    console.log(btnChange);// editProduct(addForm);
 }
 async function deleteProduct(id) {
-    const catalogueList = await fetch(`http://localhost:3000/api/catalogue.json/${id}`, {
+    const catalogueList = await fetch(`http://localhost:5000/api/catalogue.json/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -121,14 +115,12 @@ async function deleteProduct(id) {
 }
 
 async function getAllproducts() {
-    const catalogueList = await fetch('/UA-1039-Samokhvalov/API/catalogue.json');
+    const catalogueList = await fetch('http://localhost:5000/api/catalogue.json');
     const products = await catalogueList.json();
     products.forEach(product => {
         renderProduct(product);
     });
 }
-
-
 
 async function editProduct(item) {
     const data = {
@@ -141,22 +133,18 @@ async function editProduct(item) {
         currency: item[6].value,
     };
 
-    if (checkPrice(data.price)) {
-        const jsonData = await fetch('http://localhost:3000/api/catalogue.json', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-        if (jsonData.ok) {
-            const product = await jsonData.json();
-            console.log(product);
-            console.log('Дані були збережені на сервері.');
-        } else {
-            console.error('Помилка при відправці даних на сервер.');
-        }
+    const jsonData = await fetch(`http://localhost:5000/api/catalogue.json/`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    if (jsonData.ok) {
+        const product = await jsonData.json();
+        console.log(product);
+        console.log('Дані були збережені на сервері.');
     } else {
-        console.error('Помилка: поле "price" має бути числовим значенням.');
+        console.error('Помилка при відправці даних на сервер.');
     }
-}
+} 

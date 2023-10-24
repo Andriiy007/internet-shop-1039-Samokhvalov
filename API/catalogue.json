@@ -1,1 +1,1 @@
-[{"category":"Engine","id":2,"name":"Oil filter","fits":"volkswagen","availability":true,"price":10,"currency":"USD"},{"category":"Electric","id":3,"name":"Headlight","fits":"vw","availability":false,"price":600,"currency":"USD"},{"category":"Body","id":1,"name":"Hood","fits":"vw","availability":true,"price":900,"currency":"USD"},{"category":"Electric","id":5,"name":"Fog Lamp","fits":"vw","availability":true,"price":109,"currency":"USD"}]
+[{"category":"Brakes","id":1,"name":"brake","fits":"vw","availability":true,"price":12,"currency":"USD"}]
