@@ -1,9 +1,0 @@
-{
-    "category": "Engine",
-    "id": 2,
-    "name": "Oil filter",
-    "fits": "volkswagen",
-    "availability": true,
-    "price": 100,
-    "currency": "USD"
-}

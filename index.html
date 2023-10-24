@@ -10,12 +10,31 @@
 </head>
 
 <body>
-    <header data-include="partials/header.partial.html">
-    </header>
-    <main></main>
+    <header></header>
+    <main>
+        <div class="login-box">
+            <h2>Login</h2>
+            <form>
+                <div class="user-box">
+                    <input class="user__name-input" type="text" name="" required="">
+                    <label>Username</label>
+                </div>
+                <div class="user-box">
+                    <input type="password" name="" required="">
+                    <label>Password</label>
+                </div>
+                <a href="#">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Submit
+                </a>
+            </form>
+        </div>
+    </main>
     <footer></footer>
-    <script src="https://unpkg.com/html-data-include@3.3.3/html-data-include.js"></script>
-    <script type="module" src="js/index.js"></script>
+    <script type="module" src="js/login-validation.js"></script>
 </body>
 
 </html>
