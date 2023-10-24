@@ -99,6 +99,9 @@ const server = http.createServer(async function (req, res) {
             res.writeHead(404, {...headers, "Content-Type": "application/json"});
             res.end("Сторінку не знайдено");
         }
+    } else {
+        res.writeHead(404, {...headers, "Content-Type": "application/json"});
+        res.end(`Метод ${req.method} по адресі ${req.url} не підтримується`);
     }
 });
 

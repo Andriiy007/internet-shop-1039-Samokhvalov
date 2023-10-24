@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('password').value;
         if (username === 'user' && password === 'pass') {
             alert('You have successfully logged in.');
-            window.location.href = 'http://127.0.0.1:5500/UA-1039-Samokhvalov/products-catalogue.html';
+            window.location.href = 'add-form.html';
         } else {
             alert('Incorrect username or password. Please try again.');
         }

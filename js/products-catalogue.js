@@ -1,18 +1,5 @@
 window.addEventListener("DOMContentLoaded", getAllproducts);
 
-const sortByCategory = document.getElementById("sortByCategory").firstChild;
-let categoryList = [];
-
-function sortBy(arr) {
-   arr.sort();
-  return arr;
-}
-
-let btnCategory = document.getElementById("sortByCategory")
-.addEventListener("click", function () {
-  sortBy(categoryList);
-});
-
 let addForm = [];
 
 function renderProduct(product) {
@@ -39,7 +26,6 @@ function renderProduct(product) {
         </tr>
       `
   );
-  categoryList = document.getElementsByClassName("catalogue__table-li");
 }
 
 async function myModal(id) {
@@ -154,7 +140,8 @@ async function editProduct(item) {
     currency: item[6].value,
   };
 
-  const jsonData = await fetch("http://localhost:5000/api/catalogue.json", {
+  const jsonData = await fetch(`http://localhost:5000/api/catalogue.json/${data.id}`, 
+  {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

@@ -31,7 +31,7 @@ async function submitForm(item) {
         };
 
         if (checkPrice(data.price)) {
-            const jsonData = await fetch('http://localhost:5000/api/catalogue.json', {
+            const jsonData = await fetch('http://localhost:3000/api/catalogue.json', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
